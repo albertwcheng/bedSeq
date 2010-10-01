@@ -1,0 +1,18 @@
+bedSeq
+
+=== USAGE ====
+
+Usage: ./bedSeq <seqDir> <bedfilename> <bedfiletype:bed|ebed> [options] > <ofilename>
+Description: 	append sequence to bed files (bed format for the feature coordinate, ebed format for feature block coordinates)
+		seqDir contains per chromosome <chr>.seq which is one line raw sequence without header. convert fa to seq file using convertFaToPureSeq.py
+Options:
+--output-fasta	output fasta file instead of appending seq to bed file
+--use-coord-as-name	use coordinate as name of sequence instead of the name field of bed file. Only valid when --output-fasta option is specified
+--use-block-coord-as-name	use block coordinate as name. Only when --output-fasta is specified and format is ebed
+
+=== INSTALLATION ===
+
+compile using 
+
+bash make.sh
+
