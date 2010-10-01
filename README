@@ -29,3 +29,18 @@ You can use the convertFaToPureSeq.py python script to do conversion. If it is i
 for i in *.fa; do convertFaToPureSeq.py $i ${i/.fa/}.seq; done
 
 this will make <chr>.seq for each chromosome. e.g., chr1.fa => chr1.seq
+
+=== EXAMPLES ===
+
+example file is top 10 lines from acembly bed file downlaoded from UCSC genome browser table -> gene prediction track -> AceView -> acembly -> format bed
+and renamed as acembly.ebed, then 
+
+head acembly.ebed > acembly.top10.ebed 
+
+---
+
+to append sequences to the end of the bed file (assuming that you installed the seq files in the seq/ subfolder:
+bedSeq seq/ acembly.top10.ebed ebed > acembly.top10.ebedseq
+
+to get fasta files of the sequences:
+bedSeq seq/ acembly.top10.ebed ebed --output-fasta > acembly.top10.fasta
