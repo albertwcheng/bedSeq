@@ -16,3 +16,6 @@ compile using
 
 bash make.sh
 
+install into path by changing, e.g., ~/.bashrc
+
+export PATH=${PATH}:/path/to/bedSeq/folder
