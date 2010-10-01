@@ -32,7 +32,7 @@ this will make <chr>.seq for each chromosome. e.g., chr1.fa => chr1.seq
 
 === EXAMPLES ===
 
-example file is top 10 lines from acembly bed file downlaoded from UCSC genome browser table -> gene prediction track -> AceView -> acembly -> format bed
+example file is top 10 lines from mm9 acembly bed file downlaoded from UCSC genome browser table -> mouse genome mm9 -> gene prediction track -> AceView -> acembly -> format bed
 and renamed as acembly.ebed, then 
 
 head acembly.ebed > acembly.top10.ebed 
