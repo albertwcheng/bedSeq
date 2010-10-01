@@ -22,8 +22,10 @@ export PATH=${PATH}:/path/to/bedSeq/folder
 
 === TIPS for making seq files from fasta files (one fasta per chromosome) ===
 
-Say you have <chr>.fa for each chromosome.
+Say you have <chr>.fa for each chromosome, e.g., chr1.fa 
 
 You can use the convertFaToPureSeq.py python script to do conversion. If it is in your path, then
 
 for i in *.fa; do convertFaToPureSeq.py $i ${i/.fa/}.seq; done
+
+this will make <chr>.seq for each chromosome. e.g., chr1.fa => chr1.seq
