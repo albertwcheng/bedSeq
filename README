@@ -19,3 +19,11 @@ bash make.sh
 install into path by changing, e.g., ~/.bashrc
 
 export PATH=${PATH}:/path/to/bedSeq/folder
+
+=== TIPS for making seq files from fasta files (one fasta per chromosome) ===
+
+Say you have <chr>.fa for each chromosome.
+
+You can use the convertFaToPureSeq.py python script to do conversion. If it is in your path, then
+
+for i in *.fa; do convertFaToPureSeq.py $i ${i/.fa/}.seq; done
