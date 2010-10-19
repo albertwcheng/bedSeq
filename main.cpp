@@ -48,6 +48,7 @@ int printUsageAndExit(const char*programName)
 	cerr<<"--output-fasta\toutput fasta file instead of appending seq to bed file"<<endl;
 	cerr<<"--use-coord-as-name\tuse coordinate as name of sequence instead of the name field of bed file. Only valid when --output-fasta option is specified"<<endl;
 	cerr<<"--use-block-coord-as-name\tuse block coordinate as name. Only when --output-fasta is specified and format is ebed"<<endl;
+	cerr<<"--print-OK\tBy default, only error messages are printed to stderr. specifying --print-OK ask to print OK to stderr even when succesful to allow for efficient handling of piping from a master program"<<endl;
 	return EXIT_FAILURE;
 
 }
