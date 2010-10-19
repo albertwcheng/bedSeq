@@ -68,7 +68,8 @@ int main(int argc, const char**argv){
 	bool outputFasta=false;
 	bool useCoordAsName=false;
 	bool useBlockCoordAsName=false;
-
+	bool printOK=false;
+	
 	const char* programName=argv[0];
 	
 	
@@ -84,6 +85,8 @@ int main(int argc, const char**argv){
 			useCoordAsName=true;
 		else if(!strcmp(argv[ai],"--use-block-coord-as-name"))
 			useBlockCoordAsName=true;
+		else if(!strcmp(argv[ai],"--print-OK"))
+			printOK=true;
 		else {
 			cerr<<"unknown option "<<argv[ai]<<endl;
 			return printUsageAndExit(programName);
@@ -213,6 +216,8 @@ int main(int argc, const char**argv){
 				cout<<endl;
 				cout<<seq;
 				cout<<endl;
+				if(printOK)
+					cerr<<"OK"<<endl;
 
 			}
 			else {
@@ -220,6 +225,8 @@ int main(int argc, const char**argv){
 				cout<<"\t";
 				cout<<seq;
 				cout<<endl;
+				if(printOK)
+					cerr<<"OK"<<endl;
 			}
 
 			
@@ -290,7 +297,8 @@ int main(int argc, const char**argv){
 				cout<<endl;
 				cout<<seq;
 				cout<<endl;
-				
+				if(printOK)
+					cerr<<"OK"<<endl;
 				
 			}else{
 				
@@ -303,7 +311,8 @@ int main(int argc, const char**argv){
 					cout<<reverse_complement(seq);
 				}
 				cout<<endl;
-
+				if(printOK)
+					cerr<<"OK"<<endl;
 			}
 			
 			
