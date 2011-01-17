@@ -22,6 +22,7 @@ THE SOFTWARE.
 '''
 
 from sys import *
+from os.path import basename
 
 if __name__=='__main__':
 	programName=argv[0]
@@ -31,7 +32,8 @@ if __name__=='__main__':
 	except:
 		print >> stderr,"Usage",programName,"faName outputName"
 		exit()
-		
+
+	totalLength=0
 	fil=open(faName)
 	fout=open(seqOut,"w")
 	for lin in fil:
@@ -42,6 +44,9 @@ if __name__=='__main__':
 			continue
 		
 		fout.write(lin)
+		totalLength+=len(lin)
 	
 	fil.close()
 	fout.close()
+	
+	print >> stdout,basename(faName).split(".")[0]+"\t"+str(totalLength)
