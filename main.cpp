@@ -49,6 +49,7 @@ int printUsageAndExit(const char*programName)
 	cerr<<"--use-coord-as-name\tuse coordinate as name of sequence instead of the name field of bed file. Only valid when --output-fasta option is specified"<<endl;
 	cerr<<"--use-block-coord-as-name\tuse block coordinate as name. Only when --output-fasta is specified and format is ebed"<<endl;
 	cerr<<"--print-OK\tBy default, only error messages are printed to stderr. specifying --print-OK ask to print OK to stderr even when succesful to allow for efficient handling of piping from a master program"<<endl;
+	cerr<<"--seq-block-sep c, separate blocked sequences by character c"<<endl;
 	return EXIT_FAILURE;
 
 }
@@ -72,7 +73,7 @@ int main(int argc, const char**argv){
 	bool printOK=false;
 	
 	const char* programName=argv[0];
-	
+	string seqblockSep="";
 	
 	if(argc<4){
 		return printUsageAndExit(programName);
@@ -88,6 +89,15 @@ int main(int argc, const char**argv){
 			useBlockCoordAsName=true;
 		else if(!strcmp(argv[ai],"--print-OK"))
 			printOK=true;
+		else if(!strcmp(argv[ai],"--seq-block-sep"))
+		{
+			ai++; //consume next
+			if(ai>=argc){
+				cerr<<"--seq-block-sep requires one argument"<<endl;
+				printUsageAndExit(programName);
+			}
+			seqblockSep=argv[ai];
+		}
 		else {
 			cerr<<"unknown option "<<argv[ai]<<endl;
 			return printUsageAndExit(programName);
@@ -258,6 +268,9 @@ int main(int argc, const char**argv){
 				int blockSize=StringUtil::atoi(blockSizes[blockI]);
 				int getStart0=featureStart0+blockRelStart;
 				int getEnd1=getStart0+blockSize;
+				if(blockI>0){
+					seq+=seqblockSep;
+				}
 				seq+=getSeqFromRaf(thisRaf,getStart0,getEnd1,FORWARD); //always get forward first then convert at end
 			}
 			
