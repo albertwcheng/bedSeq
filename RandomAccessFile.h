@@ -40,9 +40,11 @@ public:
 	char *rafbuf;
 	int rafbuflen;
 	bool externBuffer;
+	int fileSize;
 	//string get(int start,int endEx);
 	void transfer(ostream&os,int start,int endEx);
 	string get(int start,int endEx);
+	int getFileSize();
 	RandomAccessFile(string filename,int bufsize=READLENGTHP, char *_rafbuf=NULL);
 	~RandomAccessFile();
 };
