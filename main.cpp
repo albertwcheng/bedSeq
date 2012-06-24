@@ -182,6 +182,14 @@ int main(int argc, const char**argv){
 			if( rafI==rafStreams.end())
 			{
 				thisRaf=new RandomAccessFile(seqDir+"/"+chrom+".seq");
+				if (!thisRaf->good() ) //invalid
+				{
+					delete thisRaf;
+					thisRaf=NULL;
+					continue;
+				}
+				
+				thisChr=chrom; //save time
 				//register
 				rafStreams.insert(map<string,RandomAccessFile*>::value_type(chrom,thisRaf));
 			}
@@ -190,6 +198,9 @@ int main(int argc, const char**argv){
 			}
 
 		}
+		
+		if(!thisRaf)
+			continue;
 		
 		int featureStart0=StringUtil::atoi(fields[1]);
 		int featureEnd1=StringUtil::atoi(fields[2]);
