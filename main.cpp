@@ -178,6 +178,8 @@ int main(int argc, const char**argv){
 			//switch raf!!
 			//
 			//
+            //cerr<<"switch raf thisChr="<<thisChr<<" to "<<chrom<<" line="<<bedLineBuffer<<endl;
+            
 			map<string,RandomAccessFile*>::iterator rafI=rafStreams.find(chrom);
 			if( rafI==rafStreams.end())
 			{
@@ -189,13 +191,18 @@ int main(int argc, const char**argv){
 					continue;
 				}
 				
-				thisChr=chrom; //save time
+				//thisChr=chrom; //save time
 				//register
 				rafStreams.insert(map<string,RandomAccessFile*>::value_type(chrom,thisRaf));
 			}
 			else {
 				thisRaf=rafI->second;
+                
+                
 			}
+            
+            //bug fix 10/2/2013 move the thisChr=chrom from above to here
+            thisChr=chrom;
 
 		}
 		
