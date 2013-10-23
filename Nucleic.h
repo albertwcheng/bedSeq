@@ -84,7 +84,7 @@ inline int getIndex(char c)
 	}	
 }
 
-inline char complementBase(char c)
+/*inline char complementBase(char c)
 {
 	switch(c)
 	{
@@ -101,7 +101,40 @@ inline char complementBase(char c)
 	default:
 		return c;
 	}	
+}*/
+
+//a version that doesn't change the case of the complement
+//10-23-2013
+inline char complementBase(char c)
+{
+	switch(c)
+	{
+        case A_SYM:
+            return T_SYM;
+        case A_SYML:
+            return T_SYML;
+        case T_SYM:
+            return A_SYM;
+        case T_SYML:
+            return A_SYML;
+        case C_SYM:
+            return G_SYM;
+        case C_SYML:
+            return G_SYML;
+        case G_SYM:
+            return C_SYM;
+        case G_SYML:
+            return C_SYML;
+        case U_SYM:
+            return A_SYM;
+        case U_SYML:
+            return A_SYML;
+        default:
+            return c;
+	}	
 }
+
+
 inline string complement(const string& src)
 {
 	string dst;
